@@ -4,7 +4,8 @@ from .views import (
 	LoginView,
 	ForgotPasswordView,
 	AboutView,
-	DemoFormView,)
+	DemoFormView,
+	DemoFormDetail,)
 
 app_name = 'web_forms'
 
@@ -29,4 +30,8 @@ urlpatterns = [
 		'demo',
 		DemoFormView.as_view(),
 		name = 'demo'),
+	path(
+		'demo/<str:pk>',
+		DemoFormDetail.as_view(),
+		name = 'demo-detail'),
 	]

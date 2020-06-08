@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils.text import slugify
 from django.contrib import messages
 from django.views.generic import View, TemplateView
+from django.views.generic.detail import DetailView
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.views.generic.edit import FormView
@@ -78,6 +79,6 @@ class DemoFormView(View):
 		return HttpResponseRedirect(reverse('web_forms:demo'))
 
 
-
-
-
+class DemoFormDetail(DetailView):
+	model = Transmitter
+	template_name = 'web_forms/demo_detail.html'

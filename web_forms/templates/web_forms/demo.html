@@ -27,5 +27,11 @@
 			<input type="submit" name="" value="Submit" class="btn btn-secondary">
 		</div>
 	</form>
+
+	<div class="row">
+		<div class="col-md-4 pt-4">
+			<a href="{% url 'web_forms:demo-detail' pk=transmitter.pk %}" class="btn btn-lg btn-success">View Submissions</a>
+		</div>
+	</div>
 </div>
 {% endblock body %}

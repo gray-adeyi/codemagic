@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Submissions for {{ object.form_name }}{% endblock title %}
+
+{% block body %}
+<div class="container">
+	<br>
+	<h2>Submissions for {{ object.form_name }}</h2>
+	<table class="table">
+				              <thead>
+				                <tr>
+				                	<th>#</th>
+				                	{% for head in object.basicentry_set.all %}
+				                	<th>{{ head.field_name }}</th>
+				                	{% endfor %}
+				                </tr>
+				              </thead>
+				              <tbody>
+				              	{% for receiver in object.end_user_data.all %}
+				              	<tr>
+				              		<td>{{ receiver.pk }}</td>
+				              		{% for data in receiver.response_data.all %}
+				              		<td>{{ data.data_entry }}</td>
+				              		{% endfor %}
+				              	</tr>
+				              	{% endfor %}
+				              </tbody>
+				            </table>
+
+				            <div class="row">
+		<div class="col-md-4 pt-3">
+			<a href="{% url 'web_forms:demo' %}" class="btn btn-lg btn-success">Return to forms</a>
+		</div>
+	</div>
+</div>
+{% endblock body %}
