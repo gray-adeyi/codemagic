@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Demo Form Generator{% endblock title %}
+
+{% block body %}
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			{% for message in messages %}
+			<p class="alert alert-{{ message.tags }}">{{ message}}</p>
+			{% endfor %}
+		</div>
+	</div>
+	<h3>{{ transmitter.form_name }}</h3>
+	<p>{{ transmitter.D_I }}</p>
+	<form method="POST">
+		{% csrf_token %}
+		{% for form_entry in transmitter.basicentry_set.all %}
+		<div class="form-group">
+			<label>{{ form_entry.field_name }}</label>
+			<input type="text" name="{{ form_entry.field_name | slugify }}" class="form-control">
+		</div>
+		{% endfor %}
+
+		<div class="form-control">
+			<input type="submit" name="" value="Submit" class="btn btn-secondary">
+		</div>
+	</form>
+</div>
+{% endblock body %}

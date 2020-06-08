@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'web_forms',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/assets/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Auth User Model ---
+AUTH_USER_MODEL = 'web_forms.User'
+
+# Email configs --------
+if not DEBUG:
+    EMAIL_BACKEND = 'django.core.email.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST_USER = 'production-email-username'
+    EMAIL_HOST_PASSWORD = 'production-email-password'
+    EMAIL_HOST = 'production-email-server'
+    EMAIL_PORT = 'production-email-server-port'
+    EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = (
+        "django.core.mail.backends.console.EmailBakend"
+        )
