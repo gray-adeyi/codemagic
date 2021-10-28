@@ -1,2 +1,3 @@
 /web_forms/migrations
+*.pyc
 db.sqlite3
